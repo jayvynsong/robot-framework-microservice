@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  labels:
+    io.kompose.service: robot-framework
+  name: robot-framework
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: robot-framework
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: robot-framework
+    spec:
+      dnsConfig:
+        options:
+          - name: ndots
+            value: "1"
+      containers:
+      - env:
+        - name: MYSQL_DATABASE
+          value: testlink
+        - name: MYSQL_ROOT_PASSWORD
+          value: testlink
+        image: jayvynsong/robot-framework:latest
+        imagePullPolicy: "Always"
+        name: robot-framework
+        ports:
+        - containerPort: 99
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}
