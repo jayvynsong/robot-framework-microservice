@@ -30,7 +30,7 @@ spec:
           value: testlink
         - name: MYSQL_ROOT_PASSWORD
           value: testlink
-        image: jayvynsong/robot-framework:latest
+        image: jayvynsong/robotframework:latest
         imagePullPolicy: "Always"
         name: robot-framework
         ports:
